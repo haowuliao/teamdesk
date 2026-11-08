@@ -1,0 +1,34 @@
+[project]
+name = "teamdesk-backend"
+version = "0.1.0"
+description = "TeamDesk 数字班组工作台 — backend (M1)"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "sqlalchemy[asyncio]>=2.0",
+    "aiosqlite>=0.20",
+    "sse-starlette>=2.1",
+    "openai>=1.30",
+    "pandas>=2.2",
+    "openpyxl>=3.1",
+    "pypdf>=4.0",
+    "python-multipart>=0.0.9",
+    "numpy>=1.26",
+]
+
+[project.optional-dependencies]
+# 重依赖走可选 extra，默认不装（离线演示用零依赖哈希嵌入）
+embeddings = [
+    "sentence-transformers>=3.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
+
+[dependency-groups]
+dev = []

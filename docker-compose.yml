@@ -1,0 +1,27 @@
+# TeamDesk · 数字班组工作台 — 一键启动
+# backend :8320  frontend :8321
+services:
+  backend:
+    build: ./backend
+    container_name: teamdesk-backend
+    ports:
+      - "8320:8320"
+    env_file:
+      - ./.env
+    volumes:
+      - ./backend/data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://127.0.0.1:8320/api/health')"]
+      interval: 30s
+      timeout: 5s
+      start_period: 15s
+
+  frontend:
+    build: ./frontend
+    container_name: teamdesk-frontend
+    ports:
+      - "8321:80"
+    depends_on:
+      - backend
+    restart: unless-stopped

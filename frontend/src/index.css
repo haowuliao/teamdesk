@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root { height: 100%; }
+body {
+  @apply bg-ink-950 text-slate-200 antialiased;
+  background-image:
+    radial-gradient(1200px 500px at 80% -10%, rgba(34, 211, 238, 0.06), transparent),
+    radial-gradient(900px 420px at 0% 110%, rgba(167, 139, 250, 0.05), transparent);
+}
+
+.panel { @apply rounded-lg border border-ink-600 bg-ink-850/80 backdrop-blur-sm; }
+.panel-title { @apply flex items-center gap-2 px-4 pt-3 pb-2 text-[13px] font-semibold tracking-wide text-slate-400 uppercase; }
+.chip { @apply inline-flex items-center gap-1 rounded border px-1.5 py-0.5 text-[11px] leading-4; }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { @apply rounded bg-ink-500; }
+::-webkit-scrollbar-track { background: transparent; }
